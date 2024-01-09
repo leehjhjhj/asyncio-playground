@@ -83,6 +83,12 @@ coro = c()
 print(loop is loop.run_until_complete(coro))
 ```
 - 이 결과는 동일한 메인 스레드에서 동작하는 loop이기 때문에 같은 객체임으로 True를 반환한다.
+### get_running_loop()와 get_event_loop()의 차이
 ```python
-
+asycio.create_task(coro)
 ```
+- get_event_loop()는 동일한 스레드 내에서만 동작한다.
+- 반면 get_running_loop()은 코루틴, task, 혹은 함수 내에서 호출이 가능하다.
+- 따라서 현재 동작중인 이벤트 루프를 반드시 얻을 수 있다.
+- `asycio.create_task` 안에는 `get_running_loop()`가 내장되어있어, **loop 인스턴스를 만들지 않아도 된다.**
+- 파이썬 버전업이 되면서 `get_running_loop()` 사용을 권장하고 있고, 고수준의 API는 모두 `get_running_loop()`를 사용하고 있다.
