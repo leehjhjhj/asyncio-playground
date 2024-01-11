@@ -8,6 +8,10 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.9"
 asyncio = "^3.4.3"
+grequests = "^0.7.0"
+beautifulsoup4 = "^4.12.2"
+aiohttp = "^3.9.1"
+aiofiles = "^23.2.1"
 
 
 [build-system]
